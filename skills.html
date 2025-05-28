@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css">    <title>Compétences - Mohammed Ouadouch</title>
+    <style>
+        /* Styles spécifiques à la page compétences */
+        .skills-section {
+            padding: 5rem 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .skill-card {
+            background-color: rgba(17, 17, 17, 0.7);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(7, 57, 123, 0.1), transparent);
+            z-index: -1;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.02) rotateX(5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .skill-card:hover .skill-icon {
+            transform: scale(1.2);
+            color: var(--accent-color);
+        }
+        
+        .skill-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+        
+        .skill-description {
+            color: var(--gray-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .skill-details {
+            margin-top: auto;
+        }
+        
+        .skill-progress {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-progress-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-progress-bar {
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            padding: 0.3rem 0.8rem;
+            background-color: rgba(7, 57, 123, 0.2);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .skill-more {
+            margin-top: 1rem;
+            color: var(--primary-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-more:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .skill-details-content {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-details-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .skill-details-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .skill-details-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-details-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        /* Effet 3D pour les cartes */
+        .skill-card-3d-container {
+            perspective: 1000px;
+        }
+        
+        .skill-card {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Animation pour les barres de progression */
+        @keyframes fillProgress {
+            from { width: 0; }
+            to { width: var(--progress); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Curseur personnalisé -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Animation de chargement Créative -->
+    <div id="loading">
+        <div class="loading-circuit">
+            <div class="node node1"></div>
+            <div class="node node2"></div>
+            <div class="node node3"></div>
+            <div class="node node4"></div>
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+            <div class="line line4"></div>
+            <div class="line line5"></div>
+            <div class="line line6"></div>
+        </div>
+        <span class="loading-text">Chargement du portfolio...</span>
+    </div>
+
+    <!-- Contenu principal -->
+    <div id="content" style="display: none;">
+        <!-- Navigation -->
+        <nav>
+            <div class="nav-container">
+                <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                    Mohammed <span>Ouadouch</span>
+                </div>
+                <div class="theme-toggle">
+                </div>
+                <div class="links">
+                    <div class="link"><a href="index.html">Accueil</a></div>
+                    <div class="link"><a href="about.html">À propos</a></div>
+                    <div class="link"><a href="skills.html">Compétences</a></div>
+                    <div class="link"><a href="services.html">Services</a></div>
+                    <div class="link"><a href="index.html#contact">Contact</a></div>
+                </div>
+                <i class="fa-solid fa-bars hamburg" onclick="toggleMenu()"></i>
+            </div>
+            <div class="dropdown">
+                <div class="links">
+                    <a href="index.html">Accueil</a>
+                    <a href="about.html">À propos</a>
+                    <a href="skills.html">Compétences</a>
+                    <a href="services.html">Services</a>
+                    <a href="index.html#contact">Contact</a>
+                    <i class="fa-solid fa-xmark cancel" onclick="toggleMenu()"></i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Indicateur de progression -->
+        <div class="scroll-progress"></div>
+
+        <!-- Section Compétences -->
+        <section class="skills-section">
+            <div class="container">
+                <h1 class="section-title" data-aos="fade-up" data-aos-duration="1500">Mes Compétences</h1>
+                <p class="section-description" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+                    Découvrez mon expertise technique et mes compétences professionnelles acquises au cours de ma formation et de mes projets.
+                </p>
+                
+                <div class="skills-grid">
+                    <!-- Compétence 1: HTML & CSS -->
+                    <div class="skill-card-3d-container" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <h3 class="skill-title">HTML & CSS</h3>
+                            <p class="skill-description">
+                                Expertise dans la création de pages web responsives et visuellement attrayantes avec les dernières techniques HTML et CSS.
+                            </p>
+                            <div class="skill-details">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-title">
+                                        <span>Maîtrise</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div class="skill-progress-bar">
+                                        <div class="skill-progress-fill" style="--progress: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">HTML5</span>
+                                    <span class="skill-tag">CSS3</span>
+                                    <span class="skill-tag">Responsive</span>
+                                </div>
+                                <div class="skill-more" onclick="toggleSkillDetails('html-css-details')">
+                                    <span>Voir plus</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div id="html-css-details" class="skill-details-content">
+                                    <ul class="skill-details-list">
+                                        <li>Design responsif avec Flexbox & Grid</li>
+                                        <li>Animations et transitions CSS</li>
+                                        <li>Compatibilité multi-navigateurs</li>
+                                        <li>Préprocesseurs CSS (SASS)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Compétence 2: JavaScript -->
+                    <div class="skill-card-3d-container" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fa-brands fa-js"></i>
+                            </div>
+                            <h3 class="skill-title">JavaScript</h3>
+                            <p class="skill-description">
+                                Maîtrise de JavaScript, y compris les fonctionnalités ES6, pour construire des applications web interactives.
+                            </p>
+                            <div class="skill-details">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-title">
+                                        <span>Maîtrise</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="skill-progress-bar">
+                                        <div class="skill-progress-fill" style="--progress: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">ES6+</span>
+                                    <span class="skill-tag">DOM</span>
+                                    <span class="skill-tag">Async</span>
+                                </div>
+                                <div class="skill-more" onclick="toggleSkillDetails('js-details')">
+                                    <span>Voir plus</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div id="js-details" class="skill-details-content">
+                                    <ul class="skill-details-list">
+                                        <li>Manipulation du DOM</li>
+                                        <li>Gestion des événements</li>
+                                        <li>JavaScript asynchrone (Promises, async/await)</li>
+                                        <li>Fetch API et AJAX</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Compétence 3: Sécurité Informatique -->
+                    <div class="skill-card-3d-container" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fa-solid fa-shield-alt"></i>
+                            </div>
+                            <h3 class="skill-title">Sécurité Informatique</h3>
+                            <p class="skill-description">
+                                Connaissances des principes de sécurité et des bonnes pratiques pour construire des applications web sécurisées et résilientes.
+                            </p>
+                            <div class="skill-details">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-title">
+                                        <span>Maîtrise</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="skill-progress-bar">
+                                        <div class="skill-progress-fill" style="--progress: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Kali Linux</span>
+                                    <span class="skill-tag">Pentest</span>
+                                    <span class="skill-tag">OWASP</span>
+                                </div>
+                                <div class="skill-more" onclick="toggleSkillDetails('security-details')">
+                                    <span>Voir plus</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div id="security-details" class="skill-details-content">
+                                    <ul class="skill-details-list">
+                                        <li>Meilleures pratiques pour la sécurité des applications web</li>
+                                        <li>Utilisation d'outils comme Nmap, Metasploit, Wireshark</li>
+                                        <li>Analyse des vulnérabilités avec OpenVAS</li>
+                                        <li>Systèmes de détection d'intrusion (Snort)</li>
+                                        <li>Analyse forensique (Autopsy)</li>
+                                        <li>Tests de sécurité web (Burp Suite)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compétence 4: Bases de Données -->
+                    <div class="skill-card-3d-container" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                            <h3 class="skill-title">Bases de Données</h3>
+                            <p class="skill-description">
+                                Compétences en conception, gestion et optimisation de bases de données relationnelles.
+                            </p>
+                            <div class="skill-details">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-title">
+                                        <span>Maîtrise</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="skill-progress-bar">
+                                        <div class="skill-progress-fill" style="--progress: 75%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">MySQL</span>
+                                    <span class="skill-tag">SQL Server</span>
+                                    <span class="skill-tag">SQL</span>
+                                </div>
+                                <div class="skill-more" onclick="toggleSkillDetails('db-details')">
+                                    <span>Voir plus</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div id="db-details" class="skill-details-content">
+                                    <ul class="skill-details-list">
+                                        <li>Modélisation de données (Merise)</li>
+                                        <li>Écriture de requêtes SQL complexes</li>
+                                        <li>Administration de bases de données</li>
+                                        <li>Optimisation des performances</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compétence 5: Réseaux Informatiques -->
+                    <div class="skill-card-3d-container" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <h3 class="skill-title">Réseaux Informatiques</h3>
+                            <p class="skill-description">
+                                Connaissance approfondie des protocoles réseau, de la configuration et de l'administration des réseaux.
+                            </p>
+                            <div class="skill-details">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-title">
+                                        <span>Maîtrise</span>
+                                        <span>70%</span>
+                                    </div>
+                                    <div class="skill-progress-bar">
+                                        <div class="skill-progress-fill" style="--progress: 70%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">TCP/IP</span>
+                                    <span class="skill-tag">Cisco</span>
+                                    <span class="skill-tag">Serveurs</span>
+                                </div>
+                                <div class="skill-more" onclick="toggleSkillDetails('network-details')">
+                                    <span>Voir plus</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div id="network-details" class="skill-details-content">
+                                    <ul class="skill-details-list">
+                                        <li>Configuration des routeurs et commutateurs Cisco</li>
+                                        <li>Protocoles de routage (RIP, OSPF)</li>
+                                        <li>Administration de serveurs Windows/Linux</li>
+                                        <li>Sécurité réseau (pare-feu, VPN)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compétence 6: Outils et Technologies -->
+                    <div class="skill-card-3d-container" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="800">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fa-solid fa-tools"></i>
+                            </div>
+                            <h3 class="skill-title">Outils & Technologies</h3>
+                            <p class="skill-description">
+                                Utilisation efficace des outils de développement modernes et des technologies cloud.
+                            </p>
+                            <div class="skill-details">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-title">
+                                        <span>Maîtrise</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="skill-progress-bar">
+                                        <div class="skill-progress-fill" style="--progress: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Git</span>
+                                    <span class="skill-tag">VS Code</span>
+                                    <span class="skill-tag">AWS</span>
+                                    <span class="skill-tag">WordPress</span>
+                                </div>
+                                <div class="skill-more" onclick="toggleSkillDetails('tools-details')">
+                                    <span>Voir plus</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div id="tools-details" class="skill-details-content">
+                                    <ul class="skill-details-list">
+                                        <li>Contrôle de version avec Git et GitHub</li>
+                                        <li>Environnement de développement intégré (VS Code)</li>
+                                        <li>Services cloud de base (AWS EC2, S3)</li>
+                                        <li>Développement et personnalisation WordPress</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        Mohammed <span>Ouadouch</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="index.html">Accueil</a>
+                        <a href="about.html">À propos</a>
+                        <a href="skills.html">Compétences</a>
+                        <a href="services.html">Services</a>
+                        <a href="index.html#contact">Contact</a>
+                    </div>
+                </div>
+            
+                    
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Particules d'arrière-plan -->
+    <div id="particles-js"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        AOS.init({offset: 0});
+
+        // Fonction pour animer les barres de progression
+        function animateProgressBars() {
+            const progressFills = document.querySelectorAll('.skill-progress-fill');
+            progressFills.forEach(fill => {
+                const progress = fill.style.getPropertyValue('--progress');
+                fill.style.width = progress;
+            });
+        }
+
+        // Fonction pour basculer les détails des compétences
+        function toggleSkillDetails(id) {
+            const detailsContent = document.getElementById(id);
+            const icon = event.currentTarget.querySelector('i');
+            if (detailsContent) {
+                detailsContent.classList.toggle('active');
+                if (detailsContent.classList.contains('active')) {
+                    icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+                } else {
+                    icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                }
+            }
+        }
+        
+        // Ajouter l'effet 3D au survol
+        document.querySelectorAll('.skill-card-3d-container').forEach(container => {
+            const card = container.querySelector('.skill-card');
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const rotateX = -y / 20; // Ajustez la sensibilité
+                const rotateY = x / 20;  // Ajustez la sensibilité
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+            });
+            container.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0) rotateY(0) translateY(0) scale(1)';
+            });
+        });
+
+        // Animer les barres lorsque la section est visible
+        const skillsSection = document.querySelector('.skills-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgressBars();
+                    observer.unobserve(entry.target); // N'animer qu'une fois
+                }
+            });
+        }, { threshold: 0.5 }); // Déclencher quand 50% est visible
+
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+

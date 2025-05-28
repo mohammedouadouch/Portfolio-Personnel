@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>À propos de moi - Mohammed Ouadouch</title>
+</head>
+<body>
+    <!-- Curseur personnalisé -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Animation de chargement Créative -->
+    <div id="loading">
+        <div class="loading-circuit">
+            <div class="node node1"></div>
+            <div class="node node2"></div>
+            <div class="node node3"></div>
+            <div class="node node4"></div>
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+            <div class="line line4"></div>
+            <div class="line line5"></div>
+            <div class="line line6"></div>
+        </div>
+        <span class="loading-text">Chargement du portfolio...</span>
+    </div>
+
+    <!-- Contenu principal -->
+    <div id="content" style="display: none;">
+        <!-- Navigation -->
+        <nav>
+            <div class="nav-container">
+                <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                    Mohammed <span>Ouadouch</span>
+                </div>
+                <div class="theme-toggle">
+                </div>
+                <div class="links">
+                    <div class="link"><a href="index.html">Accueil</a></div>
+                    <div class="link"><a href="about.html">À propos</a></div>
+                    <div class="link"><a href="skills.html">Compétences</a></div>
+                    <div class="link"><a href="services.html">Services</a></div>
+                    <div class="link"><a href="index.html#contact">Contact</a></div>
+                </div>
+                <i class="fa-solid fa-bars hamburg" onclick="toggleMenu()"></i>
+            </div>
+            <div class="dropdown">
+                <div class="links">
+                    <a href="index.html">Accueil</a>
+                    <a href="about.html">À propos</a>
+                    <a href="skills.html">Compétences</a>
+                    <a href="services.html">Services</a>
+                    <a href="index.html#contact">Contact</a>
+                    <i class="fa-solid fa-xmark cancel" onclick="toggleMenu()"></i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Indicateur de progression -->
+        <div class="scroll-progress"></div>
+
+        <!-- Section À propos -->
+        <section class="about-section">
+            <div class="container">
+                <h1 class="section-title" data-aos="fade-up" data-aos-duration="1500">À propos de moi</h1>
+                
+                <div class="about-grid">
+                    <!-- Profil et introduction -->
+                    <div class="about-profile" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">
+                        <div class="profile-image-container">
+                            <img src="WhatsApp Image 2024-09-09 at 11.54.07.jpeg" alt="Mohammed Ouadouch" class="profile-image-about">
+                            <div class="profile-image-overlay"></div>
+                        </div>
+                        <div class="profile-quote">
+                            <i class="fas fa-quote-left"></i>
+                            <p>Passionné par l'innovation et l'apprentissage continu dans le développement web et la cybersécurité.</p>
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenu principal -->
+                    <div class="about-content" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="300">
+                        <p class="about-intro">
+                            Bonjour ! Je suis Mohammed Ouadouch, un Jeune diplômé en ingénierie des systèmes d'information, spécialisé en développement web et bases de données, avec un Bac+2 en infrastructure digitale, option cybersécurité. Maîtrise des technologies modernes telles que HTML, CSS, JavaScript, WordPress et la gestion des bases de données.
+                        </p>
+                        <p>
+                            Passionné par l'innovation et l'apprentissage continu, je recherche une opportunité professionnelle pour intégrer une équipe dynamique, développer mes compétences et acquérir de l'expérience dans le web et la sécurité informatique.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Timeline de formation -->
+                <div class="timeline-section">
+                    <h2 class="section-subtitle" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">Mon Parcours</h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2023 - 2024</div>
+                            <div class="timeline-content">
+                                <h3>Licence en Ingénierie des Systèmes d'Information du Web et des Bases de Données</h3>
+                                <p>Acquisition de compétences avancées en développement web et gestion de bases de données.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2021 - 2023</div>
+                            <div class="timeline-content">
+                                <h3>Diplôme en Infrastructure Digitale, spécialité Cybersécurité</h3>
+                                <p>Formation approfondie en sécurité informatique et gestion des infrastructures réseau.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2021</div>
+                            <div class="timeline-content">
+                                <h3>Baccalauréat en Sciences Physiques</h3>
+                                <p>Fondation solide en sciences et mathématiques.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Compétences et certifications -->
+                <div class="about-details">
+                    <div class="about-skills" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="800">
+                        <h2 class="section-subtitle">Compétences</h2>
+                        <ul class="skills-list-about">
+                            <li><i class="fas fa-code"></i> Développement Web : HTML, CSS, JavaScript, WordPress</li>
+                            <li><i class="fas fa-database"></i> Gestion de Bases de Données : MySQL, SQL Server</li>
+                            <li><i class="fas fa-shield-alt"></i> Cybersécurité : Nmap, Metasploit, Wireshark, OpenVAS, Snort, Autopsy, Burp Suite</li>
+                            <li><i class="fas fa-network-wired"></i> Réseaux : Configuration des réseaux, TCP/IP, administration de serveurs</li>
+                            <li><i class="fas fa-laptop-code"></i> Langages de Programmation : C, C++, PHP</li>
+                            <li><i class="fas fa-tools"></i> Outils et Technologies : Git, Visual Studio Code, Kali Linux, XAMPP, AWS</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="about-certifications" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="900">
+                        <h2 class="section-subtitle">Certifications</h2>
+                        <div class="certification-cards">
+                            <div class="certification-card">
+                                <div class="certification-icon"><i class="fab fa-python"></i></div>
+                                <h3>Certificat Cisco Académique Python</h3>
+                                <p>2021</p>
+                            </div>
+                            
+                            <div class="certification-card">
+                                <div class="certification-icon"><i class="fas fa-network-wired"></i></div>
+                                <h3>Certificat Académique Cisco (CCNA1/2)</h3>
+                                <p>2021</p>
+                            </div>
+                            
+                            <div class="certification-card">
+                                <div class="certification-icon"><i class="fas fa-file-excel"></i></div>
+                                <h3>Certificat Office (Word, Excel)</h3>
+                                <p>2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projets -->
+                <div class="projects-section">
+                    <h2 class="section-subtitle" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1000">Projets</h2>
+                    
+                    <div class="projects-grid">
+                        <div class="project-card-large" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1100">
+                            <div class="project-card-content">
+                                <h3>Move&Glow</h3>
+                                <div class="project-date">07/2024</div>
+                                <p>Création d'un site web sportif pour la vente de suppléments et de packs d'abonnement pour une salle de sport. Développement avec WordPress et intégration de HTML et CSS personnalisés.</p>
+                                <div class="project-tags">
+                                    <span>WordPress</span>
+                                    <span>HTML/CSS</span>
+                                    <span>E-commerce</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card-large" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1200">
+                            <div class="project-card-content">
+                                <h3>Portfolio Personnel</h3>
+                                <div class="project-date">08/2024</div>
+                                <p>Développement d'un site moderne et interactif pour présenter mes compétences et projets. Réalisé avec HTML, CSS, JavaScript et PHP.</p>
+                                <div class="project-tags">
+                                    <span>HTML/CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>PHP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        Mohammed <span>Ouadouch</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="index.html">Accueil</a>
+                        <a href="about.html">À propos</a>
+                        <a href="skills.html">Compétences</a>
+                        <a href="services.html">Services</a>
+                        <a href="index.html#contact">Contact</a>
+                    </div>
+                </div>
+               
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Particules d'arrière-plan -->
+    <div id="particles-js"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        AOS.init({offset: 0});
+    </script>
+    <script src="script.js"></script>ody>
+</html>
+

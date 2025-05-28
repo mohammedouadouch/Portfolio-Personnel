@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio de Mohammed Ouadouch</title>
+</head>
+<body>
+    <!-- Curseur personnalisé -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Animation de chargement Créative -->
+    <div id="loading">
+        <div class="loading-circuit">
+            <div class="node node1"></div>
+            <div class="node node2"></div>
+            <div class="node node3"></div>
+            <div class="node node4"></div>
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+            <div class="line line4"></div>
+            <div class="line line5"></div>
+            <div class="line line6"></div>
+        </div>
+        <span class="loading-text">Chargement du portfolio...</span>
+    </div>
+
+    <!-- Contenu principal -->
+    <div id="content" style="display: none;">
+        <!-- Navigation -->
+        <nav>
+            <div class="nav-container">
+                <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                    Mohammed <span>Ouadouch</span>
+                </div>
+                <div class="theme-toggle">
+                    
+                </div>
+                <div class="links">
+                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">Accueil</a></div>
+                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="about.html">À propos</a></div>
+                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="skills.html">Compétences</a></div>
+                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="services.html">Services</a></div>
+                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="#contact">Contact</a></div>
+                </div>
+                <i class="fa-solid fa-bars hamburg" onclick="toggleMenu()"></i>
+            </div>
+            <div class="dropdown">
+                <div class="links">
+                    <a href="index.html">Accueil</a>
+                    <a href="about.html">À propos</a>
+                    <a href="skills.html">Compétences</a>
+                    <a href="services.html">Services</a>
+                    <a href="#contact">Contact</a>
+                    <i class="fa-solid fa-xmark cancel" onclick="toggleMenu()"></i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Indicateur de progression -->
+        <div class="scroll-progress"></div>
+
+        <!-- Section principale - Grille Bento -->
+        <section class="hero">
+            <div class="bento-grid">
+                <!-- Cellule principale - Introduction -->
+                <div class="bento-cell main-cell" data-aos="fade-up" data-aos-duration="1500">
+                    <div class="profile-container">
+                        <div class="profile-image" data-aos="zoom-out" data-aos-duration="3000">
+                            <img src="WhatsApp Image 2024-09-09 at 11.54.07.jpeg" alt="Mohammed Ouadouch">
+                        </div>
+                        <div class="profile-content">
+                            <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">Salut, je suis <span>Mohammed</span></h1>
+                            <div class="typewriter" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900">
+                                Je suis <span class="typewriter-text"></span><label class="cursor">|</label>
+                            </div>
+                            <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">
+                                Bonjour ! Je suis Mohamed Ouadouch, un développeur web créatif passionné par la création d'expériences numériques visuellement impressionnantes et interactives. Avec une solide maîtrise de HTML, CSS, JavaScript et des frameworks comme WordPress, je me spécialise dans le développement de sites web fonctionnels, engageants et mémorables.
+                            </p>
+                            <div class="btn" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1800">
+                                <a href="mailto:ouadouchmohamed862@gmail.com" class="cta-button">Travaillons ensemble</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cellule - Compétences clés -->
+                <div class="bento-cell skills-cell" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                    <h2>Compétences clés</h2>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">WordPress</span>
+                        <span class="skill-tag">Cybersécurité</span>
+                    </div>
+                    <a href="skills.html" class="cell-link">Voir toutes mes compétences <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Cellule - Réseaux sociaux -->
+                <div class="bento-cell social-cell" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+                    <h2>Retrouvez-moi</h2>
+                    <div class="social-links">
+                        <a href="https://github.com/Meddoua/Meddoua" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mohammedouadouch_" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mohammed ouadouch" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:ouadouchmohamed862@gmail.com" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1600">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cellule - Services -->
+                <div class="bento-cell services-cell" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700">
+                    <h2>Services</h2>
+                    <ul class="services-list">
+                        <li><i class="fa-solid fa-laptop-code"></i> Développement Web</li>
+                        <li><i class="fa-solid fa-shield-alt"></i> Sécurité Informatique</li>
+                        <li><i class="fa-solid fa-database"></i> Gestion de Bases de Données</li>
+                    </ul>
+                    <a href="services.html" class="cell-link">Découvrir mes services <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Cellule - Projets récents -->
+                <div class="bento-cell projects-cell" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="900">
+                    <h2>Projets récents</h2>
+                    <div class="project-cards">
+                        <div class="project-card">
+                            <div class="project-title">Move&Glow</div>
+                            <div class="project-desc">Site web sportif pour la vente de suppléments et d'abonnements</div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-title"><a href="https://mohammedouadouch.github.io/Puzzle/" target="_blank">Portfolio Personnel</a></div>
+                            <div class="project-desc">Site moderne et interactif présentant mes compétences</div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-title"><a href="https://mohammedouadouch.github.io/Puzzle/" target="_blank">Puzzle Game</a></div>
+                            <div class="project-desc">Un jeu de puzzle interactif.</div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-title"><a href="https://mohammedouadouch.github.io/Calculatrice-de-Calories/" target="_blank">Calculatrice</a></div>
+                            <div class="project-desc">Une calculatrice web fonctionnelle.</div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-title"><a href="https://mohammedouadouch.github.io/Generateur-de-Mots-de-Passe/" target="_blank">Générateur de mot de passe</a></div>
+                            <div class="project-desc">Un outil pour générer des mots de passe sécurisés.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 data-aos="fade-up" data-aos-duration="1500">Contactez-moi</h2>
+                <div class="contact-grid">
+                    <div class="contact-info" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="300">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>ouadouchmohamed862@gmail.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Maroc</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://github.com/Meddoua/Meddoua" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.instagram.com/mohammedouadouch_" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/mohammed ouadouch" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <form class="contact-form" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="500">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Votre nom" required>
+                            <label for="name">Nom</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Votre email" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" placeholder="Sujet" required>
+                            <label for="subject">Sujet</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Votre message" required></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <button type="submit" class="submit-btn">Envoyer <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        Mohammed <span>Ouadouch</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="index.html">Accueil</a>
+                        <a href="about.html">À propos</a>
+                        <a href="skills.html">Compétences</a>
+                        <a href="services.html">Services</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                
+            </div>
+        </footer>
+    </div>
+
+    <!-- Particules d'arrière-plan -->
+    <div id="particles-js"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        AOS.init({offset: 0});
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
